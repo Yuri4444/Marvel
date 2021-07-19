@@ -2,7 +2,10 @@ package com.example.marvel.ui.screen.characters
 
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuInflater
 import android.view.View
+import androidx.appcompat.widget.SearchView
 import com.example.marvel.R
 import com.example.marvel.ui.base.AbsFragment
 import com.example.marvel.ui.screen.characters.adapter.CharactersAdapter
@@ -26,6 +29,32 @@ class CharactersFragment : AbsFragment<CharactersViewModel>() {
         })
 
         viewModel?.fetch()
+
+        setHasOptionsMenu(true)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.menu_search, menu)
+
+        val searchItem = menu.findItem(R.id.menu_search)
+        val searchView = searchItem.actionView as SearchView
+
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                if (query != null) {
+                    rcCharacters.scrollToPosition(0)
+//                    viewModel.searchHero(query)
+                    searchView.clearFocus()
+                }
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                return true
+            }
+
+        })
     }
 
 

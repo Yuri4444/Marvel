@@ -1,7 +1,5 @@
 package com.example.marvel.ui.screen.characters.adapter
 
-//import com.example.marvel.data.network.model.BaseNetResponse
-//import com.example.marvel.data.network.model.Results
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -42,7 +40,8 @@ class CharactersAdapter(private val context: Context) :
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun bind(results: HeroesList) {
-            Glide.with(context).load("https://cdn.cloudflare.steamstatic.com${results.image}")
+//            Glide.with(context).load("https://cdn.cloudflare.steamstatic.com${results.image}")
+            Glide.with(context).load(results.image)
                 .into(itemView.ivImage)
             itemView.tvName.text = results.name
         }

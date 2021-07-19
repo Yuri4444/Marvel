@@ -56,6 +56,7 @@ class NetworkModule {
         return interceptors
     }
 
-    private val BASE_URL = "https://api.opendota.com/api/"
+//    private val BASE_URL = "https://api.opendota.com/api/"
+    private val BASE_URL = "https://run.mocky.io/v3/"
 
 }
