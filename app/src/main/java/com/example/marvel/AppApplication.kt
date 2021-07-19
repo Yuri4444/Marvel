@@ -1,7 +1,6 @@
 package com.example.marvel
 
 import android.app.Application
-import android.content.Context
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasAndroidInjector
 import javax.inject.Inject
@@ -23,14 +22,5 @@ class AppApplication : Application(), HasAndroidInjector {
     }
 
     override fun androidInjector() = androidInjector
-
-    companion object {
-
-        fun getApp(context: Context?): Context? {
-            val appContext = context?.applicationContext
-            return if (appContext is Context) appContext else null
-        }
-
-    }
 
 }

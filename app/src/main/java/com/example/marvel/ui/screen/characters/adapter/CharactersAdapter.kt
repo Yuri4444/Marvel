@@ -1,23 +1,50 @@
 package com.example.marvel.ui.screen.characters.adapter
 
+//import com.example.marvel.data.network.model.BaseNetResponse
+//import com.example.marvel.data.network.model.Results
+import android.content.Context
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.example.marvel.R
+import com.example.marvel.data.network.model.HeroesList
+import kotlinx.android.synthetic.main.item_characters.view.*
+import java.util.*
 
-class CharactersAdapter : RecyclerView.Adapter<CharactersAdapter.ViewHolder>() {
+class CharactersAdapter(private val context: Context) :
+    RecyclerView.Adapter<CharactersAdapter.ViewHolder>() {
 
+    private val list: MutableList<HeroesList> = ArrayList()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharactersAdapter.ViewHolder {
-        TODO("Not yet implemented")
+    fun setData(newList: List<HeroesList>) {
+        list.clear()
+        list.addAll(newList)
+        notifyDataSetChanged()
+    }
+
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): CharactersAdapter.ViewHolder {
+        val layoutInflater = LayoutInflater.from(parent.context)
+        val view = layoutInflater.inflate(R.layout.item_characters, parent, false)
+        return ViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: CharactersAdapter.ViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        return holder.bind(list[position])
     }
 
-    override fun getItemCount(): Int {
-        TODO("Not yet implemented")
-    }
+    override fun getItemCount() = list.size
 
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
+        fun bind(results: HeroesList) {
+            Glide.with(context).load("https://cdn.cloudflare.steamstatic.com${results.image}")
+                .into(itemView.ivImage)
+            itemView.tvName.text = results.name
+        }
+    }
 }

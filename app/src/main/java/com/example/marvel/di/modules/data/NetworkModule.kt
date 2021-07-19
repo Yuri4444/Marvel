@@ -56,6 +56,6 @@ class NetworkModule {
         return interceptors
     }
 
-    private val BASE_URL = "http://gateway.marvel.com/"
+    private val BASE_URL = "https://api.opendota.com/api/"
 
 }
