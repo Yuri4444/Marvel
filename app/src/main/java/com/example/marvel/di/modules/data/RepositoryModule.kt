@@ -1,7 +1,7 @@
 package com.example.marvel.di.modules.data
 
 import com.example.marvel.data.network.Api
-import com.example.marvel.data.repository.CharactersRepository
+import com.example.marvel.data.repository.Repository
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -11,6 +11,6 @@ class RepositoryModule {
 
     @Singleton
     @Provides
-    fun provideCharactersRepository(api : Api) = CharactersRepository(api)
+    fun provideCharactersRepository(api : Api) = Repository(api)
 
 }

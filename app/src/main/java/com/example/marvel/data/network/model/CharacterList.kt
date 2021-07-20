@@ -18,7 +18,7 @@ class Data {
 }
 
 class Results {
-    @SerializedName("name")
+    @SerializedName("name", alternate = ["title"])
     var name: String? = ""
     @SerializedName("thumbnail")
     var thumbnail : Thumbnail = Thumbnail()

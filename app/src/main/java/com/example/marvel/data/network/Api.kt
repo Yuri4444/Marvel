@@ -21,4 +21,11 @@ interface Api {
         @Query("name") name: String
     )  : CharacterList
 
+    @GET("/v1/public/comics")
+    suspend fun getComics(
+        @Query("apikey") apiKey: String? = "8d29d02df25c8ca489092117aaee2454",
+        @Query("hash") hash: String? = "af1da214cbea559d1ddb61f64ff39129",
+        @Query("ts") ts: Int? = 1
+    ): CharacterList
+
 }
