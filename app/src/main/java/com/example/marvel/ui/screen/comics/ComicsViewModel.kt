@@ -2,13 +2,13 @@ package com.example.marvel.ui.screen.comics
 
 import androidx.lifecycle.MutableLiveData
 import com.example.marvel.data.network.model.Results
-import com.example.marvel.data.repository.Repository
+import com.example.marvel.data.repository.NetRepository
 import com.example.marvel.ui.base.AbsViewModel
 import com.example.marvel.utils.viewModel.ioToUi
 import javax.inject.Inject
 
 class ComicsViewModel @Inject constructor(
-    private val repository: Repository
+    private val netRepository: NetRepository
 ) : AbsViewModel() {
 
     val livedata = MutableLiveData<List<Results>>()
@@ -16,7 +16,7 @@ class ComicsViewModel @Inject constructor(
     fun fetchComics() {
         ioToUi(
             io = {
-                 val result = repository.getComics()
+                 val result = netRepository.getComics()
                 result
             },
             ui = {

@@ -25,7 +25,8 @@ class MainActivity : AbsActivity<MainViewModel>() {
                 R.id.charactersFragment,
                 R.id.comicsFragment,
                 R.id.creatorsFragment,
-                R.id.eventsFragment
+                R.id.eventsFragment,
+                R.id.savedFragment
             )
         )
         bottomNavigation.setupWithNavController(navController)

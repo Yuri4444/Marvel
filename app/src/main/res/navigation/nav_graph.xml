@@ -25,4 +25,9 @@
         android:name="com.example.marvel.ui.screen.events.EventsFragment"
         android:label="@string/events"
         tools:layout="@layout/fragment_events" />
+    <fragment
+        android:id="@+id/savedFragment"
+        android:name="com.example.marvel.ui.screen.saved.SavedFragment"
+        android:label="@string/saved"
+        tools:layout="@layout/fragment_saved" />
 </navigation>

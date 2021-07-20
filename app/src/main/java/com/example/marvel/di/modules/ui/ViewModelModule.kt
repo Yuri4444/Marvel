@@ -9,6 +9,7 @@ import com.example.marvel.ui.screen.comics.ComicsViewModel
 import com.example.marvel.ui.screen.creators.CreatorsViewModel
 import com.example.marvel.ui.screen.events.EventsViewModel
 import com.example.marvel.ui.screen.main.MainViewModel
+import com.example.marvel.ui.screen.saved.SavedViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -43,4 +44,9 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(EventsViewModel::class)
     abstract fun provideEventsViewModel(viewModel: EventsViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(SavedViewModel::class)
+    abstract fun provideSavedViewModel(viewModel: SavedViewModel): ViewModel
 }

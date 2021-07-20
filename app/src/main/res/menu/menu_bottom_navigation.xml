@@ -21,4 +21,9 @@
         android:icon="@drawable/ic_events"
         android:title="@string/events" />
 
+    <item
+        android:id="@+id/savedFragment"
+        android:icon="@drawable/ic_saved"
+        android:title="@string/saved" />
+
 </menu>

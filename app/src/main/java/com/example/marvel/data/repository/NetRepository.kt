@@ -4,7 +4,7 @@ import com.example.marvel.data.network.Api
 import javax.inject.Inject
 import kotlin.concurrent.timerTask
 
-class Repository @Inject constructor(private val api: Api) {
+class NetRepository @Inject constructor(private val api: Api) {
 
     suspend fun getCharacter() = api.getCharacter().data.results
 

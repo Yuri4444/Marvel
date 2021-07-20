@@ -4,6 +4,7 @@ import com.example.marvel.ui.screen.characters.CharactersFragment
 import com.example.marvel.ui.screen.comics.ComicsFragment
 import com.example.marvel.ui.screen.creators.CreatorsFragment
 import com.example.marvel.ui.screen.events.EventsFragment
+import com.example.marvel.ui.screen.saved.SavedFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -21,6 +22,9 @@ abstract class FragmentModule {
 
     @ContributesAndroidInjector
     internal abstract fun contributeEventsFragment(): EventsFragment
+
+    @ContributesAndroidInjector
+    internal abstract fun contributeSavedFragment() : SavedFragment
 
 
 }
