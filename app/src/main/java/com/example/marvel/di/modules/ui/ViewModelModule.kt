@@ -5,6 +5,9 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.marvel.di.ViewModelFactory
 import com.example.marvel.di.ViewModelKey
 import com.example.marvel.ui.screen.characters.CharactersViewModel
+import com.example.marvel.ui.screen.comics.ComicsViewModel
+import com.example.marvel.ui.screen.creators.CreatorsViewModel
+import com.example.marvel.ui.screen.events.EventsViewModel
 import com.example.marvel.ui.screen.main.MainViewModel
 import dagger.Binds
 import dagger.Module
@@ -25,4 +28,19 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(CharactersViewModel::class)
     abstract fun provideCharactersViewModel(viewModel: CharactersViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(ComicsViewModel::class)
+    abstract fun provideComicsViewModel(viewModel: ComicsViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(CreatorsViewModel::class)
+    abstract fun provideCreatorsViewModel(viewModel: CreatorsViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(EventsViewModel::class)
+    abstract fun provideEventsViewModel(viewModel: EventsViewModel): ViewModel
 }
