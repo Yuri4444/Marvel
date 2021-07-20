@@ -1,8 +1,9 @@
-package com.example.autoapp.utils.extensions.viewModel
+package com.example.marvel.utils.viewModel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.autoapp.utils.extensions.coroutines.ioToUi
+import com.example.marvel.utils.coroutines.ioToUi
+
 import kotlinx.coroutines.Job
 
 fun <T> ViewModel.ioToUi(

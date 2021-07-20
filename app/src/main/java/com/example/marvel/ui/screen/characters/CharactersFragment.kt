@@ -27,8 +27,7 @@ class CharactersFragment : AbsFragment<CharactersViewModel>() {
             adapter.setData(it)
             Log.e("TAG", it.toString())
         })
-
-        viewModel?.fetch()
+        viewModel?.fetchCharacter()
 
         setHasOptionsMenu(true)
     }
@@ -44,7 +43,7 @@ class CharactersFragment : AbsFragment<CharactersViewModel>() {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 if (query != null) {
                     rcCharacters.scrollToPosition(0)
-//                    viewModel.searchHero(query)
+//                    viewModel?.fetch()
                     searchView.clearFocus()
                 }
                 return true

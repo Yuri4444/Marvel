@@ -5,7 +5,6 @@ import javax.inject.Inject
 
 class CharactersRepository @Inject constructor(private val api: Api) {
 
-    suspend fun getHeroes() = api.getHeroes()
-
+    suspend fun getCharacter() = api.getCharacter().data.results
 
 }

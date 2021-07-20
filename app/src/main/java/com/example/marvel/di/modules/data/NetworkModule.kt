@@ -1,5 +1,6 @@
 package com.example.marvel.di.modules.data
 
+import android.util.Log
 import com.example.marvel.BuildConfig
 import com.example.marvel.data.network.Api
 import dagger.Module
@@ -45,7 +46,12 @@ class NetworkModule {
     @Provides
     fun provideInterceptors(): ArrayList<Interceptor> {
         val interceptors = arrayListOf<Interceptor>()
-        val loggingInterceptor = HttpLoggingInterceptor().apply {
+        val loggingInterceptor = HttpLoggingInterceptor(object : HttpLoggingInterceptor.Logger {
+                override fun log(message: String) {
+                    Log.e("fhyr", message)
+                }
+            })
+            .apply {
             level = if (BuildConfig.DEBUG) {
                 HttpLoggingInterceptor.Level.BODY
             } else {
@@ -56,7 +62,6 @@ class NetworkModule {
         return interceptors
     }
 
-//    private val BASE_URL = "https://api.opendota.com/api/"
-    private val BASE_URL = "https://run.mocky.io/v3/"
+    private val BASE_URL = "https://gateway.marvel.com"
 
 }

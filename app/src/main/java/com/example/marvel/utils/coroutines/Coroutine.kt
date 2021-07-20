@@ -1,5 +1,6 @@
-package com.example.autoapp.utils.extensions.coroutines
+package com.example.marvel.utils.coroutines
 
+import android.util.Log
 import kotlinx.coroutines.*
 
 fun <T> CoroutineScope.ioToUi(
@@ -16,6 +17,7 @@ fun <T> CoroutineScope.ioToUi(
         } catch (e: Exception) {
             withContext(Dispatchers.Main) {
                 exception?.invoke(e)
+                Log.e("Exception", e.toString())
             }
         }
     }
