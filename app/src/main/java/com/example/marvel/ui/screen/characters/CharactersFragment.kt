@@ -43,7 +43,7 @@ class CharactersFragment : AbsFragment<CharactersViewModel>() {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 if (query != null) {
                     rcCharacters.scrollToPosition(0)
-//                    viewModel?.fetch()
+                    viewModel?.searchCharacter(query)
                     searchView.clearFocus()
                 }
                 return true

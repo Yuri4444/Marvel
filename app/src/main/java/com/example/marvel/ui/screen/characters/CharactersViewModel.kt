@@ -26,4 +26,16 @@ class CharactersViewModel @Inject constructor(
         )
     }
 
+    fun searchCharacter(name: String) {
+        ioToUi(
+            io = {
+                val result = charactersRepository.searchCharacter(name)
+                result
+            },
+            ui = {
+                liveData.value = it
+            }
+        )
+    }
+
 }
