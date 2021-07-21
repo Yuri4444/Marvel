@@ -2,9 +2,11 @@ package com.example.marvel.data.repository
 
 import com.example.marvel.data.network.Api
 import javax.inject.Inject
+import javax.inject.Singleton
 import kotlin.concurrent.timerTask
 
-class NetRepository @Inject constructor(private val api: Api) {
+@Singleton
+class NetRepository (private val api: Api) {
 
     suspend fun getCharacter() = api.getCharacter().data.results
 

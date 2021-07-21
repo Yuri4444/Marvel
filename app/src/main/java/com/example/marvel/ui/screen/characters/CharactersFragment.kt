@@ -7,6 +7,7 @@ import android.view.MenuInflater
 import android.view.View
 import androidx.appcompat.widget.SearchView
 import com.example.marvel.R
+import com.example.marvel.data.db.SearchedNames
 import com.example.marvel.ui.base.AbsFragment
 import com.example.marvel.ui.screen.characters.adapter.CharactersAdapter
 import kotlinx.android.synthetic.main.fragment_characters.*
@@ -43,6 +44,7 @@ class CharactersFragment : AbsFragment<CharactersViewModel>() {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 if (query != null) {
                     rcCharacters.scrollToPosition(0)
+                    viewModel?.saveSearchedName(SearchedNames(name = query))
                     viewModel?.searchCharacter(query)
                     searchView.clearFocus()
                 }
