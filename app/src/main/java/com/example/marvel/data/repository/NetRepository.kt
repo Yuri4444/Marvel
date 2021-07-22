@@ -8,7 +8,7 @@ import kotlin.concurrent.timerTask
 @Singleton
 class NetRepository (private val api: Api) {
 
-    suspend fun getCharacter() = api.getCharacter().data.results
+    suspend fun getCharacter(limit: Int, offset: Int) = api.getCharacter(limit = limit, offset = offset).data.results
 
     suspend fun searchCharacter(name: String) = api.searchCharacter(name = name).data.results
 

@@ -19,24 +19,50 @@ class CharactersViewModel @Inject constructor(
 ) : AbsViewModel() {
 
     val liveData = MutableLiveData<List<Results>>()
+    val allLiveData = MutableLiveData<ArrayList<Results>>(ArrayList())
+    var isFetching = false
+    private var offset = 0
+
+    private var isLastPage = false
+
+    init {
+        fetchCharacter()
+    }
 
     fun fetchCharacter() {
-        ioToUi(
-            io = {
-                val result = netRepository.getCharacter()
-                result
-            },
-            ui = {
-                liveData.value = it
+
+        if (!isLastPage) {
+            if (!isFetching) {
+                isFetching = true
+                ioToUi(
+                    io = {
+
+                        val answer = netRepository.getCharacter(limit = LIMIT, offset = offset)
+
+                        if (answer.size < LIMIT) {
+                            isLastPage = true
+                        }
+                        answer
+
+                    },
+                    ui = {
+                        offset += LIMIT
+                        liveData.value = it
+                        liveData.value = emptyList()
+                        allLiveData.value?.addAll(it)
+                        isFetching = false
+                    }
+                )
             }
-        )
+        }
+
+
     }
 
     fun searchCharacter(name: String) {
         ioToUi(
             io = {
-                val result = netRepository.searchCharacter(name)
-                result
+                netRepository.searchCharacter(name)
             },
             ui = {
                 liveData.value = it
@@ -48,6 +74,10 @@ class CharactersViewModel @Inject constructor(
         CoroutineScope(IO).launch {
             localRepository.insertSearchedName(searchedNames)
         }
+    }
+
+    companion object {
+        const val LIMIT = 100
     }
 
 }

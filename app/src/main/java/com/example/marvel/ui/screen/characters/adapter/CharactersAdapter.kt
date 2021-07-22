@@ -17,6 +17,12 @@ class CharactersAdapter(private val context: Context) :
     private val list: MutableList<Results> = ArrayList()
 
     fun setData(newList: List<Results>) {
+        val sizeBefore = list.size
+        list.addAll(newList)
+        notifyItemRangeInserted(sizeBefore, newList.size )
+    }
+
+    fun setAllData(newList: List<Results>) {
         list.clear()
         list.addAll(newList)
         notifyDataSetChanged()

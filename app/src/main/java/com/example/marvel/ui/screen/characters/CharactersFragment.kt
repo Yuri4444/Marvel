@@ -6,6 +6,8 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.View
 import androidx.appcompat.widget.SearchView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.marvel.R
 import com.example.marvel.data.db.SearchedNames
 import com.example.marvel.ui.base.AbsFragment
@@ -28,7 +30,36 @@ class CharactersFragment : AbsFragment<CharactersViewModel>() {
             adapter.setData(it)
             Log.e("TAG", it.toString())
         })
-        viewModel?.fetchCharacter()
+
+        viewModel?.allLiveData?.observe(viewLifecycleOwner, {
+            adapter.setAllData(it)
+        })
+
+        //viewModel?.fetchCharacter()
+
+
+
+//        rcCharacters.setOnScrollChangeListener(object : View.OnScrollChangeListener {
+//            override fun onScrollChange(p0: View?, p1: Int, p2: Int, p3: Int, p4: Int) {
+//
+//                Log.e("Hi", "Its working")
+//                if (isLastVisible()) {
+//                    Log.e("Hi", isLastVisible().toString())
+//                    viewModel?.fetchCharacter()
+//                }
+//
+//            }
+//
+//        })
+
+        rcCharacters.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                if (isLastVisible()) {
+                    viewModel?.fetchCharacter()
+                }
+                Log.e("Hi", "Its working")
+            }
+        })
 
         setHasOptionsMenu(true)
     }
@@ -56,6 +87,13 @@ class CharactersFragment : AbsFragment<CharactersViewModel>() {
             }
 
         })
+    }
+
+    fun isLastVisible(): Boolean {
+        val layoutManager = rcCharacters.layoutManager as LinearLayoutManager
+        val pos = layoutManager.findLastCompletelyVisibleItemPosition()
+        val numItems: Int = rcCharacters.adapter!!.itemCount
+        return pos >= numItems -1
     }
 
 

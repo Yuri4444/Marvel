@@ -11,8 +11,9 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_main_logo"
         android:supportsRtl="true"
+
         android:theme="@style/Theme.Marvel">
-        <activity android:name=".ui.screen.main.MainActivity">
+        <activity android:screenOrientation="sensor" android:name=".ui.screen.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

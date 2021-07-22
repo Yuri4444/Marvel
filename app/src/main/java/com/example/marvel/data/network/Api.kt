@@ -4,6 +4,7 @@ import com.example.marvel.data.network.model.CharacterList
 import com.example.marvel.utils.API_KEY
 import com.example.marvel.utils.HASH
 import com.example.marvel.utils.TS
+import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -13,7 +14,9 @@ interface Api {
     suspend fun getCharacter(
         @Query("apikey") apiKey: String? = API_KEY,
         @Query("hash") hash: String? = HASH,
-        @Query("ts") ts: Int? = TS
+        @Query("ts") ts: Int? = TS,
+        @Query("limit") limit: Int? = 10,
+        @Query("offset") offset: Int? = 0
     ): CharacterList
 
     @GET("/v1/public/characters")
