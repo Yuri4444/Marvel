@@ -39,18 +39,18 @@ class CharactersFragment : AbsFragment<CharactersViewModel>() {
 
 
 
-//        rcCharacters.setOnScrollChangeListener(object : View.OnScrollChangeListener {
-//            override fun onScrollChange(p0: View?, p1: Int, p2: Int, p3: Int, p4: Int) {
-//
-//                Log.e("Hi", "Its working")
-//                if (isLastVisible()) {
-//                    Log.e("Hi", isLastVisible().toString())
-//                    viewModel?.fetchCharacter()
-//                }
-//
-//            }
-//
-//        })
+        rcCharacters.setOnScrollChangeListener(object : View.OnScrollChangeListener {
+            override fun onScrollChange(p0: View?, p1: Int, p2: Int, p3: Int, p4: Int) {
+
+                Log.e("Hi", "Its working")
+                if (isLastVisible()) {
+                    Log.e("Hi", isLastVisible().toString())
+                    viewModel?.fetchCharacter()
+                }
+
+            }
+
+        })
 
         rcCharacters.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
